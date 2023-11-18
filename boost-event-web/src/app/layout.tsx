@@ -1,19 +1,36 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lexend } from 'next/font/google';
+import { FC, ReactNode } from 'react';
 
-const inter = Inter({ subsets: ['latin'] });
+import { ThemeProvider } from '@/core/theme/theme-provider';
+
+type Props = {
+  children: ReactNode;
+}
+
+const lexend = Lexend({ subsets: ['latin'] });
+
+const RootLayout: FC<Props> = ({ children }) => {
+  return (
+    <html lang="pt-BR">
+      <body className={lexend.className}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+};
 
 export const metadata: Metadata = {
   title: 'Digital Mark - Boost Event',
-  description: 'Eleve a estratégia de marketing para seus eventos.'
-};
-
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+  description: 'Eleve a estratégia de marketing para seus eventos.',
+  icons: [
+    {
+      rel: 'icon',
+      url: '../../public/favicon.ico',
+    }
+  ]
 };
 
 export default RootLayout;
