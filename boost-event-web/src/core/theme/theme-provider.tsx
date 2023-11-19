@@ -26,6 +26,7 @@ export const ThemeProvider: FC<Props> = ({ children }) => {
 
       'white-shades': {
         'white-99': '#E4E4E7',
+        'white-15': '#F5F7F8',
         'white-10': '#FCFCFD',
       },
 

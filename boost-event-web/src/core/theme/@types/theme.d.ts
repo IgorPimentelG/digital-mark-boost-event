@@ -17,6 +17,7 @@ declare module 'styled-components' {
 
       'white-shades': {
         'white-99': string;
+        'white-15': string;
         'white-10': string;
       },
 

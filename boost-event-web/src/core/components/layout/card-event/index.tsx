@@ -1,14 +1,18 @@
 import { FC } from 'react';
 
-import { Button } from '@/core/components/ui';
-import { Container, Info, Label } from './styles';
+import { Button, Label } from '@/core/components/ui';
+import { Container, Info } from './styles';
 
 type Props = {
   id: string;
   title: string;
   segment: string;
+  local?: string;
+  capacity?: number;
+  description?: string;
   dateAndTime: string;
   totalOfEmails: number;
+  showAction?: boolean;
 }
 
 export const CardEvent: FC<Props> = ({
@@ -16,33 +20,58 @@ export const CardEvent: FC<Props> = ({
   title,
   segment,
   dateAndTime,
-  totalOfEmails
+  local,
+  capacity,
+  description,
+  totalOfEmails,
+  showAction = true
 }) => {
   return (
     <Container>
       <div>
         <Info>
-          <Label>Título</Label>
+          <Label text='Título' />
           <span>{title}</span>
         </Info>
 
         <Info>
-          <Label>Segmento</Label>
+          <Label text='Segmento' />
           <span>{segment}</span>
         </Info>
 
         <Info>
-          <Label>Data e hora</Label>
+          <Label text='Data e hora' />
           <span>{dateAndTime}</span>
         </Info>
 
+        {local && (
+          <Info>
+            <Label text='Local' />
+            <span>{local}</span>
+          </Info>
+        )}
+
+        {capacity && (
+          <Info>
+            <Label text='Capacidade' />
+            <span>{capacity}</span>
+          </Info>
+        )}
+
         <Info>
-          <Label>Total de emails</Label>
+          <Label text='Total de emails' />
           <span>{totalOfEmails}</span>
         </Info>
+
+        {description && (
+          <Info>
+            <Label text='Descrição' />
+            <span>{description}</span>
+          </Info>
+        )}
       </div>
 
-      <Button label='Gerenciar' />
+      {showAction && <Button label='Gerenciar' />}
     </Container>
   );
 };
