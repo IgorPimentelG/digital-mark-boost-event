@@ -4,3 +4,21 @@ server:
 spring:
   application:
     name: Boost Event API
+  config:
+    import: optional:file:.env[.properties]
+  flyway:
+    baselineOnMigrate: true
+    locations: classpath:db/migration
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+security:
+  jwt:
+    secret-key: ${JWT_SECRET_KEY}
+    validity-in-milliseconds: 7200000  	# 2 Hours
