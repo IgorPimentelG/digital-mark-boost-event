@@ -12,43 +12,25 @@ export const Container = styled.div`
   }
 `;
 
-export const FieldWrap = styled.div`
-  display: flex;
-  align-items: center;
+export const Field = styled.textarea`
+  font-size: 16px;
   border-radius: 16px;
   padding: 12px;
+  outline: none;
+  resize: none;
 
   ${({ theme }) => `
     border: 1px solid ${theme.colors['grey-shades']['grey-50']};
-
-    & > button {
-      color: ${theme.colors['grey-shades']['grey-70']};
-    }
-
-    &:focus-within {
-      border-color: ${theme.colors['blue-shades']['blue-60']};
-    }
-  `};
-`;
-
-export const Field = styled(InputMask)`
-  display: flex;
-  flex: 1;
-  font-size: 16px;
-  border: none;
-
-  ${({ theme }) => `
     color: ${theme.colors['grey-shades']['grey-70']};
 
     &::placeholder {
       color: ${theme.colors['grey-shades']['grey-50']};
     }
-  `};
 
-  &[type=password]::-ms-reveal,
-  &[typeMeta=password]::-ms-clear {
-    display: none;
-  }
+    &:focus {
+      border-color: ${theme.colors['blue-shades']['blue-60']};
+    }
+  `};
 `;
 
 export const Error = styled.span`
