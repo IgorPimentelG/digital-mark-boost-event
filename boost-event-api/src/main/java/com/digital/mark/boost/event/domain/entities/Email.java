@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Table(name = "emails")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Email implements Serializable {
 
@@ -35,4 +34,8 @@ public class Email implements Serializable {
 	@JoinColumn(name = "event_id")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Event event;
+	
+	public Email() {
+		this.createdAt = LocalDateTime.now();
+	}
 }
