@@ -61,16 +61,7 @@ public class EventService {
 		log.info("Find all events");
 		return user.getEvents();
 	}
-	
-	public Event updateStatus(String id, EventStatus status) {
-		var event = findById(id);
-		event.setStatus(status);
 		
-		log.info("Event with id ({}) was updated", id);
-		
-		return repository.save(event);
-	}
-	
 	public Event save(Event event) {
 		return repository.save(event);
 	}
