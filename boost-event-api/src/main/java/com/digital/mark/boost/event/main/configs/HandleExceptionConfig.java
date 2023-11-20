@@ -11,53 +11,42 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @RestControllerAdvice
 public class HandleExceptionConfig extends ResponseEntityExceptionHandler {
 	
-	@ExceptionHandler({Exception.class, BadRequestException.class})
+	@ExceptionHandler({ Exception.class, BadRequestException.class })
 	public ResponseEntity<ExceptionProperties> handleDefaultException(Exception ex) {
-		return new ResponseEntity<>(
-			responseFactory(ex, 400),
-			HttpStatus.BAD_REQUEST
-		);
+		return new ResponseEntity<>(responseFactory(ex, 400), HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(UnauthorizedException.class)
+	public ResponseEntity<ExceptionProperties> handleUnauthorizedException(Exception ex) {
+		return new ResponseEntity<>(responseFactory(ex, 401), HttpStatus.UNAUTHORIZED);
+	}
+
+	@ExceptionHandler(ForbiddenException.class)
+	public ResponseEntity<ExceptionProperties> handleForbiddenException(Exception ex) {
+		return new ResponseEntity<>(responseFactory(ex, 403), HttpStatus.FORBIDDEN);
 	}
 
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<ExceptionProperties> handleNotFoundException(Exception ex) {
-		return new ResponseEntity<>(
-			responseFactory(ex, 404),
-			HttpStatus.NOT_FOUND
-		);
+		return new ResponseEntity<>(responseFactory(ex, 404), HttpStatus.NOT_FOUND);
 	}
 
-	@ExceptionHandler(UnauthorizedException.class)
-	public ResponseEntity<ExceptionProperties> handleUnauthorizedException(Exception ex) {
-		return new ResponseEntity<>(
-			responseFactory(ex, 401),
-			HttpStatus.UNAUTHORIZED
-		);
-	}
-	
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<ExceptionProperties> handleSQLException(DataIntegrityViolationException ex) {
-		String message = ex.getMessage();
-		int startMessage = message.indexOf("[");
-		int endMessage = message.indexOf("]");
-		
-		var text = message.substring(startMessage + 1, endMessage);
-		text = text.substring(0, text.indexOf("for key") - 2);
-		
 		var response = new ExceptionProperties(
-			text,
-			406,
-			LocalDateTime.now()
+			"Operação não pode ser concluída devido a dados inválidos ou duplicados.", 
+			406, 
+			new Date()
 		);
 		return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
 	}
-
+	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(
 		@NonNull MethodArgumentNotValidException ex,
@@ -81,19 +70,11 @@ public class HandleExceptionConfig extends ResponseEntityExceptionHandler {
 			}
 		}
 		
-		var response = new ExceptionProperties(
-			message.toString(),
-			status.value(),
-			LocalDateTime.now()
-		);
+		var response = new ExceptionProperties(message.toString(), status.value(), new Date());
 		return new ResponseEntity<>(response, status);
 	}
 
 	private ExceptionProperties responseFactory(Exception ex, int code) {
-		return new ExceptionProperties(
-			ex.getMessage(),
-			code,
-			LocalDateTime.now()
-		);
+		return new ExceptionProperties(ex.getMessage(),	code,	new Date());
 	}
 }

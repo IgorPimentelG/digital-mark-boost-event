@@ -1,9 +1,9 @@
 package com.digital.mark.boost.event.main.properties;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public record ExceptionProperties(
 	String message,
 	int code,
-	LocalDateTime timestamp
+	Date timestamp
 ) {}
