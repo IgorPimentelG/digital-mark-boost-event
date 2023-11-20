@@ -3,6 +3,7 @@ package com.digital.mark.boost.event.infra.mappers;
 import com.digital.mark.boost.event.domain.entities.User;
 import com.digital.mark.boost.event.infra.dtos.CreateUserDto;
 import com.digital.mark.boost.event.infra.dtos.UpdateUserDto;
+import com.digital.mark.boost.event.infra.dtos.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -16,6 +17,8 @@ public interface UserMapper {
 	
 	@Mapping(target = "id", ignore = true)
 	User parse(CreateUserDto source);
+	
+	UserDto parse(User source);
 	
 	void update(UpdateUserDto source, @MappingTarget User user);
 }
