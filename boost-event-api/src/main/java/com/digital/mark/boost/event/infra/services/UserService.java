@@ -21,6 +21,9 @@ public class UserService implements UserDetailsService {
 	private UserRepository repository;
 	
 	@Autowired
+	private SecurityService securityService;
+	
+	@Autowired
 	private PasswordEncoder encoder;
 	
 	private final UserMapper mapper = UserMapper.INSTANCE;
@@ -44,6 +47,10 @@ public class UserService implements UserDetailsService {
 		if (data == null) {
 			log.warn("User data is null");
 			throw new BadRequestException("Informe seus dados que deseja atualizar.");
+		}
+		
+		if (!securityService.isOwner(id)) {
+			throw new ForbiddenException();
 		}
 		
 		var entity = findById(id);
@@ -81,6 +88,10 @@ public class UserService implements UserDetailsService {
 	}
 	
 	public void delete(String id) {
+		if (!securityService.isOwner(id)) {
+			throw new ForbiddenException();
+		}
+		
 		var user = findById(id);
 		repository.delete(user);
 		
