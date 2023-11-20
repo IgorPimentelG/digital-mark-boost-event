@@ -48,6 +48,10 @@ public class User implements Serializable, UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return new ArrayList<>();
 	}
+	
+	public void addEvent(Event event) {
+		events.add(event);
+	}
 
 	@Override
 	public String getUsername() {
