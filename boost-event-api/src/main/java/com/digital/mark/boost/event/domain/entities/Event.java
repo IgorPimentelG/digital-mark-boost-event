@@ -42,6 +42,7 @@ public class Event implements Serializable {
 	
 	@Singular("email")
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "event")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private final List<Email> emails;
 	
 	@ManyToOne
@@ -52,5 +53,9 @@ public class Event implements Serializable {
 	public Event() {
 		this.status = EventStatus.IN_PROGRESS;
 		this.emails = new ArrayList<>();
+	}
+	
+	public void addEmail(Email email) {
+		emails.add(email);
 	}
 }

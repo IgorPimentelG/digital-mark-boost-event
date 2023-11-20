@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS emails(
+	id CHAR(36) PRIMARY KEY,
+	subject VARCHAR(100) NOT NULL,
+	content TEXT NOT NULL,
+	created_at TIMESTAMP NOT NULL, 
+
+	event_id CHAR(36) NOT NULL,
+	CONSTRAINT event_fk FOREIGN KEY (event_id) REFERENCES events(id)
+);
