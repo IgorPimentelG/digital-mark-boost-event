@@ -19,7 +19,7 @@ public class TokenService {
 	public AuthDto createToken(String username) {
 		var expiration = getAccessTokenExpiration();
 		var accessToken = getAccessToken(username, expiration);
-		return new AuthDto(accessToken, expiration);
+		return new AuthDto("", "", username, accessToken, expiration);
 	}
 	
 	public String validateToken(String token) {
