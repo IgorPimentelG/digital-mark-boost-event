@@ -25,7 +25,7 @@ public class UpdateEventStatus {
 	public void doTask() {
 		var now = LocalDateTime.now();
 
-		List<Event> events = repository.findAll();
+		List<Event> events = repository.findAllByStatus(EventStatus.IN_PROGRESS);
 		events.forEach(event -> {
 			if (event.getOccursAt().isBefore(now)) {
 				event.setStatus(EventStatus.EXPIRED);
