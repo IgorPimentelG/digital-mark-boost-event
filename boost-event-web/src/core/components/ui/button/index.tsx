@@ -10,7 +10,7 @@ type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButt
 
 export const Button: FC<Props> = ({ label, styleType = 'PRIMARY', ...rest }) => {
   return (
-    <Container {...rest} data-style-type={styleType}>
+    <Container {...rest} data-variant={styleType}>
       <span>{label}</span>
     </Container>
   );

@@ -7,7 +7,7 @@ export const Container = styled.button`
   width: 100%;
 
   ${({ theme }) => `
-    &[data-style-type='PRIMARY'] {
+    &[data-variant='PRIMARY'] {
       padding: 16px 28px;
       color: ${theme.colors['absolute-colors'].white};
       background-color: ${theme.colors['blue-shades']['blue-95']};
@@ -18,7 +18,7 @@ export const Container = styled.button`
       }
     }
 
-    &[data-style-type='SECONDARY'] {
+    &[data-variant='SECONDARY'] {
       font-size: 16px;
       color: ${theme.colors['blue-shades']['blue-60']};
       width: fit-content;
