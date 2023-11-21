@@ -14,7 +14,7 @@ const lexend = Lexend({ subsets: ['latin'] });
 const RootLayout: FC<Props> = ({ children }) => {
   return (
     <html lang="pt-BR">
-      <body className={lexend.className}>
+      <body className={lexend.className} suppressHydrationWarning={true}>
         <ThemeProvider>
           <AuthProvider>
             {children}

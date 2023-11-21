@@ -24,3 +24,9 @@ export const Info = styled.section`
     max-width: 240px;
   }
 `;
+
+export const ActionWrap = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+`;

@@ -5,6 +5,6 @@ export type Event = {
   segment: string;
   local: string;
   capacity: number;
-  occursAt: Date;
+  occursAt: string;
   status?: string;
 }

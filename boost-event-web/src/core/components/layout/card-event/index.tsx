@@ -1,37 +1,39 @@
 import { FC } from 'react';
 
 import { Button, Label } from '@/core/components/ui';
-import { Container, Info } from './styles';
+import { useRouter } from 'next/navigation';
+import { ActionWrap, Container, Info } from './styles';
 
 type Props = {
-  id: string;
-  title: string;
+  id?: string;
+  name: string;
   segment: string;
   local?: string;
   capacity?: number;
   description?: string;
-  dateAndTime: string;
-  totalOfEmails: number;
+  occursAt: string;
   showAction?: boolean;
 }
 
 export const CardEvent: FC<Props> = ({
   id,
-  title,
+  name,
   segment,
-  dateAndTime,
+  occursAt,
   local,
   capacity,
   description,
-  totalOfEmails,
   showAction = true
 }) => {
+
+  const router = useRouter();
+
   return (
     <Container>
       <div>
         <Info>
           <Label text='Título' />
-          <span>{title}</span>
+          <span>{name}</span>
         </Info>
 
         <Info>
@@ -41,7 +43,9 @@ export const CardEvent: FC<Props> = ({
 
         <Info>
           <Label text='Data e hora' />
-          <span>{dateAndTime}</span>
+          <span>{
+            new Date(occursAt).toLocaleDateString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+          }</span>
         </Info>
 
         {local && (
@@ -58,11 +62,6 @@ export const CardEvent: FC<Props> = ({
           </Info>
         )}
 
-        <Info>
-          <Label text='Total de emails' />
-          <span>{totalOfEmails}</span>
-        </Info>
-
         {description && (
           <Info>
             <Label text='Descrição' />
@@ -71,7 +70,11 @@ export const CardEvent: FC<Props> = ({
         )}
       </div>
 
-      {showAction && <Button label='Gerenciar' />}
+      {showAction && (
+        <ActionWrap>
+          <Button label='Gerenciar' onClick={() => router.push(`/events/${id}`)} />
+        </ActionWrap>
+      )}
     </Container>
   );
 };

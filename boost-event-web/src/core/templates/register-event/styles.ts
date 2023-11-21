@@ -35,6 +35,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: min-content;
 
     & > h2 {
       text-align: center;

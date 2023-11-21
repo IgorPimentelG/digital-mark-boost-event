@@ -1,26 +1,34 @@
 "use client";
 
 import { DetailedHTMLProps, FC, TextareaHTMLAttributes } from 'react';
+import { Control, Controller } from 'react-hook-form';
 
 import { Container, Error, Field } from './styles';
 
 type Props = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & {
+  name: string;
   label: string;
-  error?: string;
+  control: Control<any, any>;
 }
 
-export const InputTextarea: FC<Props> = ({ label, error, ...rest }) => {
+export const InputTextarea: FC<Props> = ({ name, label, control, ...rest }) => {
   return (
-    <Container>
-      <label htmlFor={label}>
-        {label}
-      </label>
+    <Controller
+      name={name}
+      control={control}
+      render={(({ field, fieldState: { error } }) => (
+        <Container>
+          <label htmlFor={label}>
+            {label}
+          </label>
 
-      <Field {...rest} id={label} />
+          <Field {...rest} {...field} id={label} />
 
-      {error && (
-        <Error>{error}</Error>
-      )}
-    </Container>
+          {error && (
+            <Error>{error.message}</Error>
+          )}
+        </Container>
+      ))}
+    />
   );
 };
