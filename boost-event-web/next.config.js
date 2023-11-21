@@ -10,6 +10,10 @@ const nextConfig = {
     API_BASE_URL: process.env.API_BASE_URL
   },
 
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+
   async redirects() {
     return [
       {

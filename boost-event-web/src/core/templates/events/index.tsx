@@ -6,6 +6,7 @@ import { FiSearch } from 'react-icons/fi';
 
 import { CardEvent } from '@/core/components/layout';
 import { Button, Logo, WarnMessage } from '@/core/components/ui';
+import { useAuth } from '@/core/hooks/useAuth';
 import { useAuthContext } from '@/core/shared/context/auth-provider';
 import { Event } from '@/core/shared/models';
 import { Container, Header, List, Title } from './styles';
@@ -16,6 +17,8 @@ type Props = {
 }
 
 export const EventsTemplate: FC<Props> = ({ eventsInProgress, eventsExpired }) => {
+
+  useAuth();
 
   const router = useRouter();
   const { logout } = useAuthContext();

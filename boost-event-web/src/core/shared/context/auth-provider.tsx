@@ -1,5 +1,6 @@
 'use client';
 
+import Cookies from 'js-cookie';
 import { FC, ReactNode, createContext, useContext, useState } from 'react';
 import { Auth } from '../models';
 
@@ -23,16 +24,19 @@ export const AuthContext = createContext<IAuthContext>({
 
 export const AuthProvider: FC<Props> = ({ children }) => {
 
+
+
   const [data, setData] = useState<Auth | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   function login(data: Auth) {
-    localStorage.setItem('accessToken', data.accessToken);
+    const token = data.accessToken;
+    Cookies.set('accessToken', token);
     setData(data);
   }
 
   function logout() {
-    localStorage.clear();
+    Cookies.remove('accessToken');
     setData(null);
     setIsAuthenticated(false);
   }

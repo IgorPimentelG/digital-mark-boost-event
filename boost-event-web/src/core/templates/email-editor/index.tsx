@@ -23,6 +23,7 @@ import { PiCheckSquareDuotone, PiWarningDuotone } from 'react-icons/pi';
 
 import { Modal } from '@/core/components/layout';
 import { Button, Input, Loader, Logo } from '@/core/components/ui';
+import { useAuth } from '@/core/hooks/useAuth';
 import { EmailSchema } from '@/core/shared/schemas';
 import { emailAPI } from '@/core/shared/services/email';
 import { ActionWrap, Container, Header } from './styles';
@@ -39,6 +40,8 @@ const DEFAUL_MODAL_MESSAGE = {
 };
 
 export const EmailEditorTemplate: FC = () => {
+
+  useAuth();
 
   const router = useRouter();
   const searchParams = useSearchParams();

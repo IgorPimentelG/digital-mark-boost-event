@@ -6,6 +6,7 @@ import { LuMailSearch } from 'react-icons/lu';
 
 import { CardEvent, CardMail } from '@/core/components/layout';
 import { Button, Logo, WarnMessage } from '@/core/components/ui';
+import { useAuth } from '@/core/hooks/useAuth';
 import { Email, Event } from '@/core/shared/models';
 import { Container, Content, Header, List } from './styles';
 
@@ -15,6 +16,8 @@ type Props = {
 }
 
 export const EventDetailsTemplate: FC<Props> = ({ emails, event }) => {
+
+  useAuth();
 
   const router = useRouter();
 

@@ -7,6 +7,7 @@ import { PiCheckSquareDuotone, PiWarningDuotone } from 'react-icons/pi';
 
 import { Modal } from '@/core/components/layout';
 import { Button, Input, InputTextarea, Loader, Logo } from '@/core/components/ui';
+import { useAuth } from '@/core/hooks/useAuth';
 import { Event } from '@/core/shared/models';
 import { EventSchema } from '@/core/shared/schemas';
 import { eventAPI } from '@/core/shared/services/event';
@@ -21,6 +22,8 @@ const DEFAUL_MODAL_MESSAGE = {
 };
 
 export const RegisterEventTemplate: FC = () => {
+
+  useAuth();
 
   const router = useRouter();
   const { register } = eventAPI();
