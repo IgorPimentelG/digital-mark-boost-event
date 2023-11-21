@@ -47,7 +47,37 @@ mesmos ocorrerem.
 - [NodeJS](https://nodejs.org/)
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 
-**OBS:** os arquivos contendo as variáveis de ambiente já estão disponíveis no repositório.
+## Execução
+
+**OBS:** os arquivos contendo as variáveis de ambiente já estão disponíveis no repositório para fins de praticidade.
+
+1. Entre no diretório boost-event-api
+
+
+2. Execute os containers docker que contém os servidores do banco de dados e do backend:
+```bash
+docker-compose up -d
+```
+
+3. Entre no diretório boost-event-web
+
+4. Instale as dependências:
+```bash
+npm install
+```
+
+5. Execute o build e rode servidor web:
+```bash
+npm run build
+```
+
+depois 
+
+```bash
+npm run start
+```
+
+A aplicação estará disponível em [http://localhost:3000](http://localhost:3000)
 
 ## Feedback
 
