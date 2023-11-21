@@ -24,7 +24,7 @@ const EventDetails = async ({ params }: Props) => {
   const event = await eventResponse.json();
 
   const emailsResponse = await fetch(
-    `${process.env.API_BASE_URL}/email/v1/list`,
+    `${process.env.API_BASE_URL}/email/v1/list?eventId=${params.id}`,
     { headers }
   );
   const emails = await emailsResponse.json();

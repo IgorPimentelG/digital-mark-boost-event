@@ -14,6 +14,6 @@ public interface EmailRepository extends JpaRepository<Email, String> {
 	@Query("SELECT e FROM Email e INNER JOIN e.event ev WHERE ev.user.id = :userId AND e.id = :id")
 	Optional<Email> findById(@Param("id") String id, @Param("userId") String userId);
 	
-	@Query("SELECT e FROM Email e INNER JOIN e.event ev WHERE ev.user.id = :userId")
-	List<Email> findAll(@Param("userId") String userId);
+	@Query("SELECT e FROM Email e INNER JOIN e.event ev WHERE ev.user.id = :userId AND ev.id = :eventId")
+	List<Email> findAll(@Param("userId") String userId, @Param("eventId") String eventId);
 }

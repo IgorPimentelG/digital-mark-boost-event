@@ -15,8 +15,12 @@ export const emailAPI = () => {
     return api.get(`/email/v1/find/${id}`);
   }
 
-  function findAll() {
-    return api.get('/email/v1/list');
+  function findAll(eventId: string) {
+    return api.get('/email/v1/list', {
+      params: {
+        eventId
+      }
+    });
   }
 
   return { register, find, findAll };

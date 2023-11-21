@@ -34,8 +34,10 @@ public class EmailController {
 	}
 	
 	@GetMapping("/v1/list")
-	public ResponseEntity<List<Email>> findAll() {
-		var result = service.findAll();
+	public ResponseEntity<List<Email>> findAll(
+		@RequestParam(value = "eventId") String eventId
+	) {
+		var result = service.findAll(eventId);
 		return ResponseEntity.ok(result);
 	}
 }

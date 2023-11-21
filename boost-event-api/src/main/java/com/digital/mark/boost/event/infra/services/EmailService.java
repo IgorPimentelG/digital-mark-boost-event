@@ -55,9 +55,9 @@ public class EmailService {
 		return email;
 	}
 	
-	public List<Email> findAll() {
+	public List<Email> findAll(String eventId) {
 		var userId = securityContext.authenticatedUser().getId();
-		var emails = repository.findAll(userId);
+		var emails = repository.findAll(userId, eventId);
 		
 		log.info("Find all email");
 		
