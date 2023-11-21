@@ -1,6 +1,6 @@
 'use client';
 
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 import { AxiosError } from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -60,7 +60,7 @@ export const SignInTemplate = () => {
 
             <Form onSubmit={handleSubmit(handleSignIn)}>
               <Input
-                name="email"
+                name='email'
                 label='Email'
                 type='email'
                 placeholder='Insira seu e-mail'
@@ -79,7 +79,7 @@ export const SignInTemplate = () => {
             <Footer>
               <span>Ainda não tem conta?</span>
               <Button
-                label='Cadastra-se'
+                label='Cadastre-se'
                 styleType='SECONDARY'
                 onClick={() => router.push('/sign-up')}
               />

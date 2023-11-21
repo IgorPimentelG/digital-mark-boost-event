@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
 import { Container } from './styles';

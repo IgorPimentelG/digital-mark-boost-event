@@ -77,4 +77,4 @@ export const EventsTemplate: FC<Props> = ({ eventsInProgress, eventsExpired }) =
       </div>
     </Container>
   );
-}
+};

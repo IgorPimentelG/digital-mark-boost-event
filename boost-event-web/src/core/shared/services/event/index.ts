@@ -16,4 +16,4 @@ export const eventAPI = () => {
   }
 
   return { register, find, findAll };
-}
+};

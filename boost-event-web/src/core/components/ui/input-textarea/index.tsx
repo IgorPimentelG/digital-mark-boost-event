@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { DetailedHTMLProps, FC, TextareaHTMLAttributes } from 'react';
 import { Control, Controller } from 'react-hook-form';
@@ -9,7 +9,7 @@ type Props = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTML
   name: string;
   label: string;
   control: Control<any, any>;
-}
+};
 
 export const InputTextarea: FC<Props> = ({ name, label, control, ...rest }) => {
   return (

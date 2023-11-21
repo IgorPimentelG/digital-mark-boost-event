@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { FC, ReactNode } from 'react';
 import { DefaultTheme, ThemeProvider as Provider } from 'styled-components';

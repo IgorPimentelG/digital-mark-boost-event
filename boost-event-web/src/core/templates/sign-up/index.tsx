@@ -1,6 +1,6 @@
 'use client';
 
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 import { AxiosError } from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -75,7 +75,7 @@ export const SignUpTemplate = () => {
 
             <Form onSubmit={handleSubmit(handleSignUp)}>
               <Input
-                name="name"
+                name='name'
                 label='Nome'
                 placeholder='Ex.: husky'
                 control={control}

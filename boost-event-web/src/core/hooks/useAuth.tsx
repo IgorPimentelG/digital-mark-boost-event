@@ -12,4 +12,4 @@ export const useAuth = () => {
       redirect('/');
     }
   }, [isAuthenticated]);
-}
+};

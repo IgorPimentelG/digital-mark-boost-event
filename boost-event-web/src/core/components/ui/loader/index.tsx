@@ -16,4 +16,4 @@ export const Loader = () => {
       <Spinner />
     </Container>,
     document.body) : null;
-}
+};

@@ -1,4 +1,3 @@
-import InputMask from 'react-input-mask';
 import styled from 'styled-components';
 
 export const Container = styled.div`

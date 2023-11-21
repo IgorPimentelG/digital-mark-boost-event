@@ -7,4 +7,4 @@ export const Logo: FC = () => {
       <h1>Boost <span>Event</span></h1>
     </Container>
   );
-}
+};

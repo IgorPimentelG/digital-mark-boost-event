@@ -23,6 +23,6 @@ const Events = async () => {
       />
     </>
   );
-}
+};
 
 export default Events;

@@ -2,7 +2,7 @@
 
 import { ComponentProps, FC, useState } from 'react';
 import { Control, Controller } from 'react-hook-form';
-import { FiEye, FiEyeOff } from "react-icons/fi";
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 import { Container, Error, Field, FieldWrap } from './styles';
 
@@ -61,4 +61,4 @@ export const Input: FC<Props> = ({ name, label, control, mask, ...rest }) => {
       )}
     />
   );
-}
+};

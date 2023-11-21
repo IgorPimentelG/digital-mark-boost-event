@@ -24,4 +24,4 @@ export const emailAPI = () => {
   }
 
   return { register, find, findAll };
-}
+};

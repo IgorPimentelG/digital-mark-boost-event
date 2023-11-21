@@ -12,4 +12,4 @@ export const authAPI = () => {
   }
 
   return { signIn, signUp };
-}
+};

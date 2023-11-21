@@ -34,6 +34,6 @@ const EventDetails = async ({ params }: Props) => {
       <EventDetailsTemplate emails={emails || []} event={event} />
     </>
   );
-}
+};
 
 export default EventDetails;

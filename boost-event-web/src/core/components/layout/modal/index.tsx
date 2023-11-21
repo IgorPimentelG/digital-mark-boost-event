@@ -21,4 +21,4 @@ export const Modal: FC<Props> = ({ title, message, icon, onClose }) => {
       </Card>
     </Container>
   );
-}
+};

@@ -6,6 +6,6 @@ const EmailEditor = () => {
       <EmailEditorTemplate />
     </>
   );
-}
+};
 
 export default EmailEditor;
