@@ -18,11 +18,17 @@ export const Header = styled.div`
   }
 `;
 
-
 export const ActionWrap = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-end;
+  margin-top: 24px;
+  
+  & > form {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
 
   & > button {
     width: fit-content;

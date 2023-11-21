@@ -9,7 +9,7 @@ import { Container, Error, Field, FieldWrap } from './styles';
 type FieldProps = Omit<ComponentProps<typeof Field>, 'mask'>;
 type Props = FieldProps & {
   name: string;
-  label: string;
+  label?: string;
   control: Control<any, any>;
   mask?: string;
 }
@@ -23,11 +23,14 @@ export const Input: FC<Props> = ({ name, label, control, mask, ...rest }) => {
     <Controller
       name={name}
       control={control}
+      defaultValue=''
       render={({ field, fieldState: { error } }) => (
         <Container>
-          <label htmlFor={label}>
-            {label}
-          </label>
+          {label && (
+            <label htmlFor={label}>
+              {label}
+            </label>
+          )}
 
           <FieldWrap>
             <Field

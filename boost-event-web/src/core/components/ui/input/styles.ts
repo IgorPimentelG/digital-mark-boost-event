@@ -20,6 +20,7 @@ export const FieldWrap = styled.div`
 
   ${({ theme }) => `
     border: 1px solid ${theme.colors['grey-shades']['grey-50']};
+    background-color: ${theme.colors['absolute-colors'].white};
 
     & > button {
       color: ${theme.colors['grey-shades']['grey-70']};

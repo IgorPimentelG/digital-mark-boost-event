@@ -11,14 +11,7 @@ import {
 } from '@mdxeditor/editor';
 import { FC } from 'react';
 
-import { Button } from '@/core/components/ui';
-import { ActionWrap } from './styles';
-
-type Props = {
-  onSave: () => void;
-}
-
-export const Toolbar: FC<Props> = ({ onSave }) => {
+export const Toolbar: FC = () => {
 
   const Separator = () => (
     <div data-orientation="vertical" aria-orientation="vertical" role="separator" />
@@ -39,10 +32,6 @@ export const Toolbar: FC<Props> = ({ onSave }) => {
       <InsertThematicBreak />
       <Separator />
       <BlockTypeSelect />
-
-      <ActionWrap>
-        <Button label='Salvar' onClick={onSave} />
-      </ActionWrap>
     </>
   );
 }
