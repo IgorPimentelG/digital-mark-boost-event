@@ -37,11 +37,11 @@ export const SignInTemplate = () => {
     try {
       const response = await signIn(data);
       login(response.data);
-      router.push('/home');
+      router.push('/events');
     } catch (error) {
       const httpError = error as AxiosError;
       const data = httpError.response?.data as { message: '' };
-      setErrorMessage(data.message || httpError.message);
+      setErrorMessage(data?.message || httpError.message);
     }
 
     setIsLoading(false);

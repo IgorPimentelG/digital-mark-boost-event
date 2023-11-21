@@ -20,7 +20,7 @@ const DEFAUL_MODAL_MESSAGE = {
   title: '',
   message: '',
   hasError: false
-}
+};
 
 export const SignUpTemplate = () => {
 
@@ -46,12 +46,11 @@ export const SignUpTemplate = () => {
         hasError: false
       });
     } catch (error) {
-      console.log("🚀 ~ file: index.tsx:49 ~ handleSignUp ~ error:", error)
       const httpError = error as AxiosError;
       const data = httpError.response?.data as { message: '' };
       setModalMessage({
         title: 'Não foi possível se registrar',
-        message: data.message || httpError.message,
+        message: data?.message || httpError.message,
         hasError: true
       });
     }
