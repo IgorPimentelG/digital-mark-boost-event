@@ -15,9 +15,35 @@ services:
       POSTGRES_SCHEMA: public
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - local
+
+  app-api:
+    container_name: app-api
+    restart: always
+    build:
+      context: ./boost-event-api
+      dockerfile: Dockerfile
+    command: sh -c 'java -jar /app/target/*jar'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:${DB_PORT}/${DB_NAME}?stringtype=unspecified
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_FLYWAY_URL: jdbc:postgresql://db:${DB_PORT}/${DB_NAME}?stringtype=unspecified
+      SPRING_FLYWAY_USER: ${DB_USER}
+      SPRING_FLYWAY_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '8080:8080'
+    env_file:
+      - ./boost-event-api./.env
+    depends_on:
+      - db
+    networks:
+      - local
 
 volumes:
   db_data:
+
 
 networks:
   local:
