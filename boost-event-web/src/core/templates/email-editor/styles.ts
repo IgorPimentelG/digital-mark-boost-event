@@ -34,4 +34,12 @@ export const ActionWrap = styled.div`
     width: fit-content;
     padding: 8px 16px;
   }
+
+  @media (max-width: 450px) {
+    justify-content: center;
+
+    & > form {
+      flex-direction: column;
+    }
+  }
 `;
