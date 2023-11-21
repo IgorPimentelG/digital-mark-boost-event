@@ -10,7 +10,7 @@ export const Container = styled.main`
 
     & > img {
       height: 100vh;
-      width: 50vw;
+      width: 40vw;
       object-fit: cover;
     }
 
@@ -23,7 +23,7 @@ export const Container = styled.main`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  width: 60vw;
   padding: 38px;
 
   & > div:nth-child(2) {

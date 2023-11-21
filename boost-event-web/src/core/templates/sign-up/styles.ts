@@ -9,8 +9,8 @@ export const Container = styled.main`
     flex: 1;
 
     & > img {
-      height: 100vh;
-      width: 50vw;
+      height: 100%;
+      width: 40vw;
       object-fit: cover;
     }
 
@@ -23,7 +23,7 @@ export const Container = styled.main`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  width: 60vw;
   padding: 38px;
 
   & > div:nth-child(2) {
@@ -57,6 +57,7 @@ export const Form = styled.form`
 `;
 
 export const Header = styled.div`
+  margin-top: 58px;
   margin-bottom: 28px;
 
   & > h2 {

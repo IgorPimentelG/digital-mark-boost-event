@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
 import { FC, ReactNode } from 'react';
 
+import { AuthProvider } from '@/core/shared/context/auth-provider';
 import { ThemeProvider } from '@/core/theme/theme-provider';
 
 type Props = {
@@ -15,7 +16,9 @@ const RootLayout: FC<Props> = ({ children }) => {
     <html lang="pt-BR">
       <body className={lexend.className}>
         <ThemeProvider>
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
