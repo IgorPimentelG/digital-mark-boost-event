@@ -24,14 +24,13 @@ export const AuthContext = createContext<IAuthContext>({
 
 export const AuthProvider: FC<Props> = ({ children }) => {
 
-
-
   const [data, setData] = useState<Auth | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   function login(data: Auth) {
     const token = data.accessToken;
     Cookies.set('accessToken', token);
+    setIsAuthenticated(true);
     setData(data);
   }
 
