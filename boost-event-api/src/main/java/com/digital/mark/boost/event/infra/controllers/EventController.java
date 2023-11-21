@@ -2,6 +2,7 @@ package com.digital.mark.boost.event.infra.controllers;
 
 import com.digital.mark.boost.event.domain.entities.Event;
 import com.digital.mark.boost.event.infra.dtos.CreateEventDto;
+import com.digital.mark.boost.event.infra.dtos.EventsDto;
 import com.digital.mark.boost.event.infra.services.EventService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class EventController {
 	}
 	
 	@GetMapping("/v1/list")
-	public ResponseEntity<List<Event>> findAll() {
+	public ResponseEntity<EventsDto> findAll() {
 		var result = service.findAll();
 		return ResponseEntity.ok(result);
 	}

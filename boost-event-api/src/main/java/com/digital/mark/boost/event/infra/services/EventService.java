@@ -3,6 +3,7 @@ package com.digital.mark.boost.event.infra.services;
 import com.digital.mark.boost.event.domain.entities.Event;
 import com.digital.mark.boost.event.domain.types.EventStatus;
 import com.digital.mark.boost.event.infra.dtos.CreateEventDto;
+import com.digital.mark.boost.event.infra.dtos.EventsDto;
 import com.digital.mark.boost.event.infra.errors.*;
 import com.digital.mark.boost.event.infra.mappers.EventMapper;
 import com.digital.mark.boost.event.infra.repositories.EventRepository;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -56,10 +58,23 @@ public class EventService {
 		return event;
 	}
 	
-	public List<Event> findAll() {
+	public EventsDto findAll() {
 		var user = securityContext.authenticatedUser();
+		var events = user.getEvents();
+		List<Event> inProgress = new ArrayList<>();
+		List<Event> expired = new ArrayList<>();
+		
+		events.forEach(event -> {
+			if (event.getStatus() == EventStatus.IN_PROGRESS) {
+				inProgress.add(event);
+			} else {
+				expired.add(event);
+			}
+		});
+		
 		log.info("Find all events");
-		return user.getEvents();
+		
+		return new EventsDto(inProgress, expired);
 	}
 		
 	public Event save(Event event) {
